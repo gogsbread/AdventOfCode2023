@@ -11,3 +11,7 @@ project('advent2015', 'cpp',
 executable('1',
     '1.cpp',
     dependencies: [])
+
+executable('2',
+    '2.cpp',
+    dependencies: [])
