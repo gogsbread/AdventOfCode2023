@@ -15,3 +15,7 @@ executable('1',
 executable('2',
     '2.cpp',
     dependencies: [])
+
+executable('3',
+    '3.cpp',
+    dependencies: [])
