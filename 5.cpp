@@ -26,7 +26,6 @@ int64_t inv_mapper(std::vector<Map> &map, int64_t dst) {
 }
 
 int64_t p1(const std::vector<std::string> &in) {
-  std::string mode;
   std::vector<int64_t> seeds{};
   std::vector<Map> soil{};
   std::vector<Map> fert{};
@@ -102,7 +101,7 @@ int64_t p1(const std::vector<std::string> &in) {
 }
 
 int64_t p2(const std::vector<std::string> &in) {
-  std::string mode;
+  std::vector<int64_t> seeds{};
   std::vector<Map> soil{};
   std::vector<Map> fert{};
   std::vector<Map> water{};
@@ -111,7 +110,6 @@ int64_t p2(const std::vector<std::string> &in) {
   std::vector<Map> hum{};
   std::vector<Map> loc{};
 
-  std::vector<int64_t> seeds{};
   {
     auto sds = gb::split(gb::split(in[0], ": "sv).at(1), " "sv);
     std::transform(
