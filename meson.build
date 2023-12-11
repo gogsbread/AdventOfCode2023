@@ -3,10 +3,11 @@
 # meson compile -C build_ 1
 # echo '<input>' | ./build_/1
 # meson setup --reconfigure build_
+# or meson setup --reconfigure build_ --buildtype=debug (for debug builds)
 
-project('advent2015', 'cpp',
+project('advent2023', 'cpp',
   version : '0.1',
-  default_options : ['warning_level=3', 'cpp_std=c++20'])
+  default_options : ['warning_level=3', 'cpp_std=c++20', 'b_ndebug=if-release', 'optimization=g'])
 
 executable('1',
     '1.cpp',
@@ -30,4 +31,8 @@ executable('5',
 
 executable('6',
     '6.cpp',
+    dependencies: [])
+
+executable('7',
+    '7.cpp',
     dependencies: [])

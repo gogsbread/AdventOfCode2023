@@ -82,6 +82,21 @@ void sscanf(const std::string_view in, const std::string_view fmt,
   (arg_resize(args), ...);
 }
 
+template <typename T> T svtoT(const std::string_view sv) {
+  T v{};
+  auto [_, ec] = std::from_chars(sv.data(), sv.data() + sv.length(), v);
+  if (ec == std::errc::invalid_argument) {
+    std::ostringstream ss{};
+    ss << "Not a number " << std::quoted(sv);
+    throw std::invalid_argument(ss.str());
+  } else if (ec == std::errc::result_out_of_range) {
+    std::ostringstream ss{};
+    ss << "Out of range for " << typeid(T).name();
+    throw std::invalid_argument(ss.str());
+  }
+  return v;
+}
+
 std::vector<std::string> readIn() {
   std::vector<std::string> lines;
   for (std::string l; getline(std::cin, l);) {
