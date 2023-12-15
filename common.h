@@ -60,6 +60,21 @@ std::vector<std::string_view> split(std::string_view sentence,
   return r;
 }
 
+template <std::ranges::range T>
+std::string join(const T &iterable, std::string delim) {
+  auto begin = std::begin(iterable);
+  auto end = std::end(iterable);
+  if (begin == end)
+    return std::string{};
+
+  std::ostringstream oss{};
+  oss << *begin++;
+  while (begin != end) {
+    oss << delim << *begin++;
+  }
+  return oss.str();
+}
+
 template <typename T> auto arg_handle(T &arg) {
   if constexpr (std::is_same_v<std::decay_t<T>, std::string>) {
     arg.resize(100);
