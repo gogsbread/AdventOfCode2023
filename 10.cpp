@@ -122,7 +122,7 @@ int p2(const std::vector<std::string> &in) {
     }
   } while (next.first != s);
 
-  // Brilliant Redittors suggested Shoelace(for area) & Pick's formula(for
+  // Brilliant Redditors suggested Shoelace(for area) & Pick's(for
   // non-pipe tiles). I was thinking about floodfill or even just counting from
   // left to right but wasn't sure how to get that right considering edge cases.
   // https://www.reddit.com/r/adventofcode/comments/18evyu9/comment/kcqmhwk/?utm_source=share&utm_medium=web2x&context=3
