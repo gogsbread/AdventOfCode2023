@@ -11,6 +11,7 @@
 #include <cstdio>
 #include <cstring>
 #include <deque>
+#include <format>
 #include <fstream>
 #include <functional>
 #include <iomanip>
@@ -60,17 +61,17 @@ std::vector<std::string_view> split(std::string_view sentence,
   return r;
 }
 
-template <std::ranges::range T>
-std::string join(const T &iterable, std::string delim) {
+template <std::ranges::range T, typename Proj = std::identity>
+std::string join(const T &iterable, std::string delim, Proj proj) {
   auto begin = std::begin(iterable);
   auto end = std::end(iterable);
   if (begin == end)
     return std::string{};
 
   std::ostringstream oss{};
-  oss << *begin++;
+  oss << proj(*begin++);
   while (begin != end) {
-    oss << delim << *begin++;
+    oss << delim << proj(*begin++);
   }
   return oss.str();
 }

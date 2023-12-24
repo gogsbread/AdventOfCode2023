@@ -5,6 +5,7 @@
 # meson setup --reconfigure build_
 # or meson setup --reconfigure build_ --buildtype=debug (for debug builds)
 
+
 project('advent2023', 'cpp',
   version : '0.1',
   default_options : ['warning_level=3', 'cpp_std=c++20', 'b_ndebug=if-release', 'optimization=g'])
@@ -47,4 +48,10 @@ executable('9',
 
 executable('10',
     '10.cpp',
+    dependencies: [])
+
+# requires g++ 13 or above for c++17 full support
+# reconfigure project with `CXX=/usr/bin/g++-13 meson setup --wipe build_`
+executable('11',
+    '11.cpp',
     dependencies: [])
